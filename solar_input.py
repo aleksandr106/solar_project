@@ -59,6 +59,7 @@ def parse_star_parameters(line, star):
     star.Vx=a[6]
     star.Vy=a[7]
     star.R=a[1]
+    star.type='star'
        # FIXME: not done yet
 
 def parse_planet_parameters(line, planet):
@@ -88,6 +89,7 @@ def parse_planet_parameters(line, planet):
     planet.Vx=a[6]
     planet.Vy=a[7]
     planet.R=a[1]
+    planet.type='planet'
     # FIXME: not done yet...
 
 
