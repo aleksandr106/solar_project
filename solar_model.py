@@ -12,28 +12,14 @@ def calculate_force(body, space_objects):
 
     **body** — тело, для которого нужно вычислить дейстующую силу.
     **space_objects** — список объектов, которые воздействуют на тело.
-    **rc** - расстояние до ц.м.сиситемы
-    **rcx** - расстояние до ц.м.с. по оси х
-    **rcy** - расстояние до ц.м.с. по оси у
-    **mrcx(y)** - масса да на координату помноженная
     """
-    M=0
-    mrcx=0
-    mrcy=0
     body.Fx = body.Fy = 0
     for obj in space_objects:
-        mrcx += obj.m * obj.x
-        mrcy += obj.m * obj.y
-    for obj in space_objects:
-        M += obj.m
-    rcx = mrcx / M
-    rcy = mrcy / M
-    rc = (rcx ** 2 + rcy ** 2) ** 0.5
-    for obj in space_objects:
-        if obj == body:
-            continue
-        body.Fx += body.m * M * gravitational_constant * rcx / rc ** 3
-        body.Fy += body.m * M * gravitational_constant * rcy / rc ** 3
+        if body == obj:
+            continue  # тело не действует гравитационной силой на само себя!
+        r = ((body.x - obj.x)**2 + (body.y - obj.y)**2)**0.5
+        body.Fx += gravitational_constant * body.m * object.m * (body.x -obj.x)/r**3   
+        body.Fy += gravitational_constant * body.m * object.m * (body.y -obj.y)/r**3   
 
 
 def move_space_object(body, dt):
