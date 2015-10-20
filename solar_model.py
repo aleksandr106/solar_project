@@ -17,7 +17,9 @@ def calculate_force(body, space_objects):
     **rcy** - расстояние до ц.м.с. по оси у
     **mrcx(y)** - масса да на координату помноженная
     """
-
+    M=0
+    mrcx=0
+    mrcy=0
     body.Fx = body.Fy = 0
     for obj in space_objects:
         mrcx += object.m * object.x
