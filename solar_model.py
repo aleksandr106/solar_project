@@ -22,10 +22,10 @@ def calculate_force(body, space_objects):
     mrcy=0
     body.Fx = body.Fy = 0
     for obj in space_objects:
-        mrcx += object.m * object.x
-        mrcy += object.m * object.y
+        mrcx += obj.m * obj.x
+        mrcy += obj.m * obj.y
     for obj in space_objects:
-        M += object.m
+        M += obj.m
     rcx = mrcx / M
     rcy = mrcy / M
     rc = (rcx ** 2 + rcy ** 2) ** 0.5
